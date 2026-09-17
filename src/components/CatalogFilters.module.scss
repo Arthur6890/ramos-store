@@ -1,0 +1,26 @@
+.aside {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.heading {
+  font-family: var(--font-archivo-black), sans-serif;
+  font-size: 1.1rem;
+  color: #1b1f2a;
+  margin: 0 0 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid #1b1f2a;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.groupLabel {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1b1f2a;
+}

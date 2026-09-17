@@ -21,9 +21,13 @@ A snapshot of a Customer's Cart (Jerseys, sizes, quantities, and price at the ti
 _Avoid_: Order, Inquiry, Cart submission
 
 **Club**:
-The football team a Jersey represents (e.g. Benfica). One of the two facets, alongside Fit Line, that Customers browse and filter the catalog by.
+The football team a Jersey represents (e.g. Benfica). One of the three facets, alongside Fit Line and League, that Customers browse and filter the catalog by.
 _Avoid_: Team
 
 **Fit Line**:
-The Men's, Women's, or Kids' category of a Jersey; each Fit Line of the same design is a separate Jersey with its own size range and price. The other facet Customers browse and filter the catalog by.
+The Men's, Women's, or Kids' category of a Jersey; each Fit Line of the same design is a separate Jersey with its own size range and price. Another facet Customers browse and filter the catalog by.
 _Avoid_: Gender, category
+
+**League**:
+The competition a Club competes in (e.g. Serie A, Premier League, Bundesliga). A property of the Club, not the Jersey — Customers filter the catalog by League indirectly, through the Club it belongs to.
+_Avoid_: Championship, competition, division

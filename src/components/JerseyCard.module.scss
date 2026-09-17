@@ -1,0 +1,31 @@
+.media {
+  position: relative;
+}
+
+.priceBadge {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  background: #1b1f2a;
+  color: #f5f7f6;
+  font-family: var(--font-archivo-black), sans-serif;
+  font-size: 0.9rem;
+  padding: 0.3rem 0.6rem;
+}
+
+.body {
+  padding: 0.85rem 1rem 1rem;
+}
+
+.club {
+  font-size: 0.8rem;
+  color: #5b6460;
+  margin: 0 0 0.15rem;
+}
+
+.name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1b1f2a;
+  margin: 0;
+}
