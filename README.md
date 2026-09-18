@@ -45,9 +45,30 @@ e [ADR-0003](./docs/adr/0003-mui-with-sass-modules-for-bespoke-ui.md).
 - `/carrinho` — carrinho (estado client-side/localStorage), cria o Order Request e
   redireciona para o WhatsApp do vendedor.
 
-## Notas de implementação pendentes
+## Migrations
 
-- As páginas ainda estão com um layout funcional básico (MUI default) — o próximo passo é
-  uma passada de design visual (plugin `frontend-design`) na home, catálogo e PDP.
-- Sem Docker/Postgres local disponível neste ambiente, o build/dev ainda não foi validado
-  ponta a ponta contra um banco real — validar assim que houver uma connection string.
+O projeto usa migrations do Payload (`src/migrations/`) em vez de deixar o schema ser
+sincronizado automaticamente — isso é obrigatório em produção (o Postgres da Vercel/Neon não
+faz "push" de schema sozinho) e, a partir do momento em que existe uma migration, o modo dev
+local também para de fazer push automático.
+
+Depois de mudar um campo/coleção do Payload:
+
+```bash
+npm run payload -- migrate:create <nome-da-migration>
+npm run payload -- migrate
+```
+
+Isso aplica a migration no Postgres local (`DATABASE_URL` do `.env`). Pra aplicar em produção,
+repita o `migrate` apontando `DATABASE_URL` pra connection string do Neon (ex: via
+`vercel env pull .env.vercel-prod --environment=production` e um `DATABASE_URL=... npm run
+payload -- migrate`), ou rode como parte do processo de deploy.
+
+## Deploy (Vercel)
+
+O banco de produção é um Neon provisionado via Vercel Marketplace (`vercel integration add
+neon`), que já injeta `DATABASE_URL` e as demais variáveis `POSTGRES_*`/`PG*` automaticamente —
+não copie a `DATABASE_URL` do `.env` local pro painel da Vercel. `PAYLOAD_SECRET` e
+`BLOB_READ_WRITE_TOKEN` (Vercel Blob) precisam ser configurados manualmente nas Environment
+Variables do projeto. Depois de mudar variáveis de ambiente, é preciso um novo deploy
+(`vercel --prod`) para elas valerem — Functions já publicadas não recarregam env vars sozinhas.
