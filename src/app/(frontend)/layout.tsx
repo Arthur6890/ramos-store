@@ -1,6 +1,7 @@
 import { Archivo, Archivo_Black } from 'next/font/google'
 import React from 'react'
 
+import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { Providers } from '@/components/Providers'
 
@@ -32,6 +33,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
         <Providers>
           <Header />
           <main>{children}</main>
+          <Footer />
         </Providers>
       </body>
     </html>

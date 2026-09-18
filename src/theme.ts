@@ -1,25 +1,36 @@
 import { createTheme } from '@mui/material/styles'
 
+// Colors sampled directly from public/logo-oficial.png (the official crest).
+// See docs/adr/0005-brand-assets-are-source-of-truth-for-visual-identity.md.
+export const brand = {
+  blue: '#489CCC',
+  pink: '#E42478',
+  ink: '#242424',
+}
+
 export const theme = createTheme({
   palette: {
     mode: 'light',
     background: {
-      default: '#E9EDEC',
-      paper: '#F5F7F6',
+      default: '#F7F7F5',
+      paper: '#FFFFFF',
     },
     primary: {
-      main: '#C81E3A',
-      dark: '#9B1730',
-      contrastText: '#F5F7F6',
+      main: brand.blue,
+      contrastText: '#FFFFFF',
+    },
+    secondary: {
+      main: brand.pink,
+      contrastText: '#FFFFFF',
     },
     text: {
-      primary: '#1B1F2A',
-      secondary: '#5B6460',
+      primary: brand.ink,
+      secondary: '#66696C',
     },
-    divider: '#C7CDC9',
+    divider: '#E1E2E0',
   },
   shape: {
-    borderRadius: 3,
+    borderRadius: 4,
   },
   typography: {
     fontFamily: 'var(--font-archivo), "Helvetica Neue", Arial, sans-serif',
@@ -32,7 +43,7 @@ export const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 3,
+          borderRadius: 4,
         },
       },
     },
@@ -40,7 +51,7 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           boxShadow: 'none',
-          border: '1px solid #C7CDC9',
+          border: '1px solid #E1E2E0',
         },
       },
     },
@@ -48,7 +59,7 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           boxShadow: 'none',
-          borderBottom: '1px solid #C7CDC9',
+          borderBottom: '1px solid #E1E2E0',
         },
       },
     },

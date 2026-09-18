@@ -41,13 +41,18 @@ export default function CarrinhoPage() {
           totalPrice,
         }),
       })
-      if (!res.ok) throw new Error('Falha ao registrar o pedido')
+      if (!res.ok) {
+        const body = await res.json().catch(() => null)
+        console.error('Falha ao registrar o pedido:', res.status, body)
+        throw new Error('Falha ao registrar o pedido')
+      }
 
       const message = buildOrderMessage(customerName, items, totalPrice)
       const whatsappUrl = buildWhatsAppUrl(message)
       clear()
       window.location.href = whatsappUrl
-    } catch {
+    } catch (err) {
+      console.error('Falha ao completar pedido:', err)
       setError('Não foi possível completar o pedido. Tente novamente.')
       setSubmitting(false)
     }
