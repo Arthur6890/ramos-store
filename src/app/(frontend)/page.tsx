@@ -10,6 +10,11 @@ import type { Club, Jersey, Media } from '@/payload-types'
 
 import styles from './home.module.scss'
 
+// Reads Jerseys/Testimonials straight from Payload; without this, Next.js
+// statically freezes the homepage at build time and new content added via
+// the admin never shows up until the next deploy.
+export const dynamic = 'force-dynamic'
+
 export default async function HomePage() {
   const payload = await getPayloadClient()
 

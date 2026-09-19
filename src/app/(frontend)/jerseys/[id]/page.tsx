@@ -10,6 +10,11 @@ import type { Club, Media } from '@/payload-types'
 
 import styles from './jersey.module.scss'
 
+// Without this, each jersey ID gets rendered once on first visit and Next.js
+// caches that render indefinitely — later edits in the admin (price,
+// description, images) would never show up on an already-visited page.
+export const dynamic = 'force-dynamic'
+
 function formatBRL(value: number) {
   return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 }
