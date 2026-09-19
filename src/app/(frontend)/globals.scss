@@ -4,6 +4,20 @@ body {
   padding: 0;
 }
 
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
 * {
   box-sizing: border-box;
 }

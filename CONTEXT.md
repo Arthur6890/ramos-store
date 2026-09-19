@@ -31,3 +31,7 @@ _Avoid_: Gender, category
 **League**:
 The competition a Club competes in (e.g. Serie A, Premier League, Bundesliga). A property of the Club, not the Jersey — Customers filter the catalog by League indirectly, through the Club it belongs to.
 _Avoid_: Championship, competition, division
+
+**Testimonial**:
+A real customer quote the seller manually adds via the Payload admin to display on the homepage as social proof. Never fabricated — the homepage section stays hidden until at least one exists.
+_Avoid_: Review, feedback

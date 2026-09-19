@@ -72,6 +72,7 @@ export interface Config {
     clubs: Club;
     jerseys: Jersey;
     'order-requests': OrderRequest;
+    testimonials: Testimonial;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -84,6 +85,7 @@ export interface Config {
     clubs: ClubsSelect<false> | ClubsSelect<true>;
     jerseys: JerseysSelect<false> | JerseysSelect<true>;
     'order-requests': OrderRequestsSelect<false> | OrderRequestsSelect<true>;
+    testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -236,6 +238,17 @@ export interface OrderRequest {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials".
+ */
+export interface Testimonial {
+  id: number;
+  customerName: string;
+  quote: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -277,6 +290,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'order-requests';
         value: number | OrderRequest;
+      } | null)
+    | ({
+        relationTo: 'testimonials';
+        value: number | Testimonial;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -410,6 +427,16 @@ export interface OrderRequestsSelect<T extends boolean = true> {
       };
   totalPrice?: T;
   status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials_select".
+ */
+export interface TestimonialsSelect<T extends boolean = true> {
+  customerName?: T;
+  quote?: T;
   updatedAt?: T;
   createdAt?: T;
 }
